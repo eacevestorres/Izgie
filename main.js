@@ -1,4 +1,4 @@
-let daKey = require('./config.json');
+let daKey = require('./daKey');
 let Discord = require('discord.js');
 
 let client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
