@@ -1,3 +1,4 @@
+let daKey = require('./config.json');
 let Discord = require('discord.js');
 
 let client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
@@ -10,4 +11,4 @@ client.events = new Discord.Collection();
 	require(`./handlers/${handler}`)(client, Discord);
 });
 
-client.login('OTEyMDY2OTY4MjY4NDM5NjE0.YZqijg.IjwNY0lW4Uuj605TY1WosIA9fI8');
+client.login(daKey.token)
