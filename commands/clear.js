@@ -25,9 +25,9 @@ module.exports = {
         
                         break;
 
-                        case (args[0] > 100):
+                        case (args[0] > 99):
 
-                        return message.reply("I can't delete more than 100 ~dummy!").catch(error => console.log(error.stack));
+                        return message.reply("I can't delete more than 99 ~dummy!").catch(error => console.log(error.stack));
             
                             break;
 
@@ -38,14 +38,14 @@ module.exports = {
                             break;
         }
 
-        var requestedNumber = parseInt(args);
+        var requestedNumber = parseInt(args) + (1);
 
         if(Number.isInteger(requestedNumber)) {
-
+            console.log(requestedNumber)
         await message.channel.messages.fetch({limit: requestedNumber}).then(messages =>{
-            message.channel.bulkDelete(messages).catch(error => console.log(error.stack));});
+            message.channel.bulkDelete(messages).catch(error =>  message.reply("I can\'t delete messages older than 14 days ~dummy!"));});
             message.delete().catch(error => { });
-            return;
+             return;
         }
         else {
             return message.reply("I can only delete whole numbers ~dummy!");
