@@ -1,6 +1,7 @@
 const fs = require('fs');
 
 module.exports = (client, Discord) =>{
+    
     let command_files = fs.readdirSync('./commands/').filter(file =>file.endsWith('.js'))
 
     for(let file of command_files){

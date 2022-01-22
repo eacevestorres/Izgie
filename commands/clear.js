@@ -41,14 +41,22 @@ module.exports = {
         var requestedNumber = parseInt(args) + (1);
 
         if(Number.isInteger(requestedNumber)) {
-            console.log(requestedNumber)
+
+            console.log( 'Deleted ' + requestedNumber + ' messages.')
+
         await message.channel.messages.fetch({limit: requestedNumber}).then(messages =>{
+
             message.channel.bulkDelete(messages).catch(error =>  message.reply("I can\'t delete messages older than 14 days ~dummy!"));});
+
             message.delete().catch(error => { });
+
              return;
         }
+        
         else {
+
             return message.reply("I can only delete whole numbers ~dummy!");
+
         }
        }
    }
