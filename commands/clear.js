@@ -9,31 +9,31 @@ module.exports = {
 
             case (message.channel.type == "dm"):
 
-            return message.reply("I can\'t delete messages in dms ~dummy!"); 
+            return message.author.send("I can\'t delete messages in dms ~dummy!"); 
 
                 break;
 
                 case (!args[0]):
 
-                return message.reply("How many ~dummy?");
+                return message.author.send("How many ~dummy?");
     
                     break;
 
                     case (isNaN(args[0])):
 
-                    return message.reply("Numbers!I need Numbers ~dummy!");
+                    return message.author.send("Numbers! I need Numbers ~dummy!");
         
                         break;
 
                         case (args[0] > 99):
 
-                        return message.reply("I can't delete more than 99 ~dummy!").catch(error => console.log(error.stack));
+                        return message.author.send("I can't delete more than 99 ~dummy!").catch(error => console.log(error.stack));
             
                             break;
 
                             case (args[0] < 1):
 
-                            return message.reply("I can't delete 0 or less than 0 ~dummy!").catch(error => console.log(error.stack));
+                            return message.author.send("I can't delete 0 or less than 0 ~dummy!").catch(error => console.log(error.stack));
             
                             break;
         }
@@ -46,7 +46,7 @@ module.exports = {
 
         await message.channel.messages.fetch({limit: requestedNumber}).then(messages =>{
 
-            message.channel.bulkDelete(messages).catch(error =>  message.reply("I can\'t delete messages older than 14 days ~dummy!"));});
+            message.channel.bulkDelete(messages).catch(error =>  message.author.send("I can\'t delete messages older than 14 days ~dummy!"));});
 
             message.delete().catch(error => { });
 
@@ -55,7 +55,7 @@ module.exports = {
         
         else {
 
-            return message.reply("I can only delete whole numbers ~dummy!");
+            return message.author.send("I can only delete whole numbers ~dummy!");
 
         }
        }

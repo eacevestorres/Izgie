@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/eacevestorres/Izgie#readme",
   "dependencies": {
-    "discord.js": "^13.6.0"
+    "axios": "^1.2.2",
+    "discord.js": "^13.12.0"
   }
 }

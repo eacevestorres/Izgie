@@ -1,5 +1,4 @@
 const axios = require('axios').default;
-var _ = require('lodash');
 const fs = require('fs');
 
 const {MessageActionRow, MessageButton} = require("discord.js");
@@ -15,7 +14,7 @@ const execute = async (client, message, args, Discord) => {
     //If user does not type anything after typing the command.
     if (!subReddit) { 
         message.delete()
-        return message.channel.send('You gotta tell me which subreddit ~dummy!');
+        return message.author.send('You gotta tell me which subreddit ~dummy!');
     }
 
     var subRedditUrl = `https://www.reddit.com/r/${subReddit}/search.json?q='${searchTerm}&restrict_sr=on&include_over_18=on&sort=relevance`
@@ -120,8 +119,8 @@ const execute = async (client, message, args, Discord) => {
         .setCustomId("set")
         .setEmoji("📌")
         .setStyle("SECONDARY")
-    ); //Sending the message
-
+    ); 
+    //Sending the message
     if (!searchTerm){searchTerm = ""}
     else {searchTerm = ": " + searchTerm}                       
     if (!message.guild){return message.channel.send({content: `** ${subReddit} **\n*** ${imageNumber} of ${totalImages}***\n**${title}**\n${image}`}), images;}
@@ -131,7 +130,7 @@ const execute = async (client, message, args, Discord) => {
     } catch (error){
         console.log(error);
         message.delete();
-        return message.channel.send('That subreddit doesn\'t exist anymore');
+        return message.author.send('That subreddit doesn\'t exist anymore');
     };
 
 }
