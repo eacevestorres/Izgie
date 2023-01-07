@@ -88,22 +88,22 @@ client.on('interactionCreate', async interaction => {
 		console.log (interaction.customId)
 	}
 
-	// if (interaction.customId === 'random') {
-	// 	const messageKey = interaction.message.content.split(' ');
-	// 	const rawCache = fs.readFileSync(`./cache/${messageKey[1]}.json`);
-	// 	const selectedCache = JSON.parse(rawCache);
-	// 	const totalPostsInCache = [];
-	// 	for (var i = 0; i < selectedCache.length; i++){
-	// 		totalPostsInCache.push(selectedCache[i].id)
-	// 	}
-	// 	ranNumber = Math.floor(Math.random() * totalPostsInCache.length)
-	// 	const title = selectedCache[ranNumber].title
-	// 	const image = selectedCache[ranNumber].image
-	// 	const id = selectedCache[ranNumber].id
-	// 	const newContent = `** ${messageKey[1]} **\n*** ${id} of ${totalPostsInCache.length}***\n**${title}**\n${image}`
-	// 	await interaction.update({ content:newContent, components: [row]});
-	// 	console.log (interaction.customId)
-	// }
+	if (interaction.customId === 'random') {
+		const messageKey = interaction.message.content.split(' ');
+		const rawCache = fs.readFileSync(`./cache/${messageKey[1]}.json`);
+		const selectedCache = JSON.parse(rawCache);
+		const totalPostsInCache = [];
+		for (var i = 0; i < selectedCache.length; i++){
+			totalPostsInCache.push(selectedCache[i].id)
+		}
+		ranNumber = Math.floor(Math.random() * totalPostsInCache.length)
+		const title = selectedCache[ranNumber].title
+		const image = selectedCache[ranNumber].image
+		const id = selectedCache[ranNumber].id
+		const newContent = `** ${messageKey[1]} **\n*** ${id} of ${totalPostsInCache.length}***\n**${title}**\n${image}`
+		await interaction.update({ content:newContent, components: [row]});
+		console.log (interaction.customId)
+	}
 
 	if (interaction.customId === 'delete') {
 		await interaction.update({ content: 'Deleting!', components: []});
